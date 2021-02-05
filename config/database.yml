@@ -18,3 +18,12 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000

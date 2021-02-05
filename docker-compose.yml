@@ -4,13 +4,13 @@ services:
     image: postgres:9.6-alpine
     environment:
       POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "ror_social_scaffold_development"
+      POSTGRES_DB: "ror_social_scaffold_production"
     volumes:
-      - ./tmp/db:/var/lib/postgresql/db
+      - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
     entrypoint: ["./app/lib/docker-entrypoint.sh"]
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bin/rails s -e default -p 3000 -b '0.0.0.0'
     volumes:
       - .:/ror-social-scaffold
     ports:
