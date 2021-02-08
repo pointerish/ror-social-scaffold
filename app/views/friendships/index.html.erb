@@ -1,0 +1,7 @@
+<section class="users-section">
+  <ul class="users-list">
+  <% @inverse_friendships.reverse.each do |request|%>
+    <%=render partial: 'confirm_decline', locals: { request: request } %>
+  <% end %> 
+  </ul>
+</section>
