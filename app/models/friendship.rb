@@ -20,7 +20,7 @@ class Friendship < ApplicationRecord
   scope :pending_invites_by_me, ->(user_id) { where("user_id = ? AND status = 'pending'", user_id) }
   scope :pending_invites_to_me, ->(user_id) { where("friendee_id = ? AND status = 'pending'", user_id) }
 
-  def confirm_friend
-    create!(friendee_id: user_id, user_id: friendee_id, status: true)
-  end
+  # def confirm_friend
+  #  create(friendee_id: user_id, user_id: friendee_id, status: 'confirmed')
+  # end
 end

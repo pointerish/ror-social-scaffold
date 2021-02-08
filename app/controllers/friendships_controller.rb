@@ -17,10 +17,10 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    @friendship.status = 'aapproved'
+    @friendship.status = 'confirmed'
 
     if @friendship.save
-      @friendship.confirm_friend
+      # @friendship.confirm_friend
       redirect_to user_path(current_user.id), notice: 'Friend request was successfully confirmed.'
     else
       redirect_to user_path(current_user.id), alert: @friendship.error.full_messages.join('. ').to_s

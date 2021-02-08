@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <%= form_for(current_user.friendships.new, url: user_friendships_path(user)) do |form| %>
-  <%= form.submit 'Add friend', class: 'btn btn-secondary' %>
-<% end %>
+      <%= form.submit 'Add friend', class: 'btn btn-secondary' %>
+    <% end %>
   </span>
 </li>
