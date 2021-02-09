@@ -16,11 +16,6 @@ class Friendship < ApplicationRecord
   belongs_to :user, foreign_key: "user_id", class_name: "User"
   belongs_to :user, foreign_key: "friendee_id", class_name: "User"
 
-  scope :user, ->(user_id) { User.where("user_id = ?", user_id) }
-  scope :confirmed_friends, ->(user_id) { where("user_id = ? AND status = 'confirmed'", user_id) }
-  scope :pending_invites_by_me, ->(user_id) { where("user_id = ? AND status = 'pending'", user_id) }
-  scope :pending_invites_to_me, ->(user_id) { where("friendee_id = ? AND status = 'pending'", user_id) }
-
   # def confirm_friend
   #  create(friendee_id: user_id, user_id: friendee_id, status: 'confirmed')
   # end

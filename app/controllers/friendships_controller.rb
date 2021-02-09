@@ -30,7 +30,23 @@ class FriendshipsController < ApplicationController
   def index
     @friendships = current_user.friendships
     @inverse_friendships = current_user.inverse_friendships
-    @my_friends = User.where( 'id = ?', @friendships.confirmed_friends(current_user.id))
+    @confirmed_friends = []
+    @pending_friends_to_me = []
+    @pending_friends_by_me = []
+    @friendships.each do |f|
+      if f.status == 'confirmed'
+        @confirmed_friends << User.find(f.friendee_id)
+      elsif f.status == 'pending'
+        @pending_friends_by_me << User.find(f.friendee_id)
+      end
+    end
+    @inverse_friendships.each do |f|
+      if f.status == 'confirmed'
+        @confirmed_friends << User.find(f.user_id)
+      elsif f.status == 'pending'
+        @pending_friends_to_me << User.find(f.user_id)
+      end
+    end
   end
 
   def destroy

@@ -1,24 +1,24 @@
 <section class="users-section">
   <h3>Confirmed Friends</h3>
   <ul class="users-list">
-    <% @friendships.confirmed_friends(current_user.id).each do |request|%>
-      <li><%= link_to request.user.name, user_path(request.user.id) %></li>
-    <% end %> 
-  </ul>
-</section>
-<section class="users-section">
-  <h3>Pending Invites To Me</h3>
-  <ul class="users-list">
-    <% @friendships.pending_invites_to_me(current_user.id).each do |request|%>
-      <%=render partial: 'decline', locals: { request: request } %>
+    <% @confirmed_friends.each do |request|%>
+      <%= link_to request.name, user_path(request.id) %><br/>
     <% end %> 
   </ul>
 </section>
 <section class="users-section">
   <h3>Pending Invites By Me</h3>
   <ul class="users-list">
-    <% @friendships.pending_invites_by_me(current_user.id).each do |request|%>
-      <li><%= link_to request.user.name, user_path(request.user.id) %></li>
+    <% @pending_friends_by_me.each do |request|%>
+      <%= link_to request.name, user_path(request.id) %><br/>
+    <% end %> 
+  </ul>
+</section>
+<section class="users-section">
+  <h3>Pending Invites To Me</h3>
+  <ul class="users-list">
+    <% @pending_friends_to_me.each do |request|%>
+      <%=render partial: 'decline', locals: { request: request } %><br/>
     <% end %> 
   </ul>
 </section>
