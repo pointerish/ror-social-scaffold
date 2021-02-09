@@ -1,7 +1,24 @@
 <section class="users-section">
+  <h3>Confirmed Friends</h3>
   <ul class="users-list">
-  <% @inverse_friendships.reverse.each do |request|%>
-    <%=render partial: 'decline', locals: { request: request } %>
-  <% end %> 
+    <% @friendships.confirmed_friends(current_user.id).each do |request|%>
+      <li><%= link_to request.user.name, user_path(request.user.id) %></li>
+    <% end %> 
+  </ul>
+</section>
+<section class="users-section">
+  <h3>Pending Invites To Me</h3>
+  <ul class="users-list">
+    <% @friendships.pending_invites_to_me(current_user.id).each do |request|%>
+      <%=render partial: 'decline', locals: { request: request } %>
+    <% end %> 
+  </ul>
+</section>
+<section class="users-section">
+  <h3>Pending Invites By Me</h3>
+  <ul class="users-list">
+    <% @friendships.pending_invites_by_me(current_user.id).each do |request|%>
+      <li><%= link_to request.user.name, user_path(request.user.id) %></li>
+    <% end %> 
   </ul>
 </section>

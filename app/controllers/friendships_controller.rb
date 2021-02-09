@@ -30,10 +30,11 @@ class FriendshipsController < ApplicationController
   def index
     @friendships = current_user.friendships
     @inverse_friendships = current_user.inverse_friendships
+    @my_friends = User.where( 'id = ?', @friendships.confirmed_friends(current_user.id))
   end
 
   def destroy
-    @friendship = Friendship.find_by(friendee_id: current_user.id, user_id: params[:user_id])
+    @friendship = Friendship.find_by user_id: current_user.id, friendee_id: params[:user_id]
 
     if @friendship.destroy
       redirect_to user_path(current_user.id), notice: 'Friend request declined, we won\'t inform the user'
