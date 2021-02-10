@@ -17,6 +17,6 @@ class Friendship < ApplicationRecord
   belongs_to :user, foreign_key: "friendee_id", class_name: "User"
 
   # def confirm_friend
-  #  create(friendee_id: user_id, user_id: friendee_id, status: 'confirmed')
+  #   create(friendee_id: current_user.id, user_id: id, status: 'confirmed')
   # end
 end

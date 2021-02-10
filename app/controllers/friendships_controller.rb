@@ -16,10 +16,10 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.find_by user_id: params[:user_id], friendee_id: current_user.id
     @friendship.status = 'confirmed'
 
-    if @friendship.save
+    if @friendship.save!
       # @friendship.confirm_friend
       redirect_to user_path(current_user.id), notice: 'Friend request was successfully confirmed.'
     else
@@ -48,7 +48,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find_by user_id: current_user.id, friendee_id: params[:user_id]
+    @friendship = Friendship.find_by user_id: params[:user_id], friendee_id: current_user.id
 
     if @friendship.destroy
       redirect_to user_path(current_user.id), notice: 'Friend request declined, we won\'t inform the user'
