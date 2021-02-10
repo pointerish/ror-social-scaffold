@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
   let(:user) { User.create(name: 'Josias', email: 'josiasjag@gmail.com', password: '123123') }
-  let(:friendee) { User.create(name: 'Lorena', email: 'anerlo@gmail.com', password: '123123') }
 
   scenario 'User is able to sign in' do
     visit root_path
