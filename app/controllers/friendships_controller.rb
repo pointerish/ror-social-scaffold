@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
     @friendship.status = 'pending'
     if @friendship.save
       flash[:notice] = 'Friend request sent!'
-      redirect_to root_url
+      redirect_to users_path
     else
       redirect_to root_url, alert: @friendship.errors.full_messages.join('. ').to_s
     end
