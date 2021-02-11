@@ -39,7 +39,7 @@ class PostsController < ApplicationController
       end
     end
     timeline_posts.each do |post|
-      if friend_ids.include?(post.user_id)
+      if friend_ids.include?(post.user_id) || post.user_id == current_user.id
         posts_to_display << post
       end
     end
