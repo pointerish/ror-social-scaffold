@@ -18,6 +18,7 @@
   <h3>Pending Invites To Me</h3>
   <ul class="users-list">
     <% @pending_friends_to_me.each do |request|%>
+      <p class="name">Name: <%= request.name %> </p>
       <%=render partial: 'decline', locals: { request: request } %><br/>
     <% end %> 
   </ul>
