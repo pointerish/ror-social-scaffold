@@ -9,7 +9,6 @@ RSpec.describe 'Like', type: :feature do
     fill_in 'user_password', with: '123123'
     click_on 'Log in'
     sleep(3)
-    expect(page).to have_content('This is a post created for a test!')
     expect(page).to have_content('Like!')
   end
 end

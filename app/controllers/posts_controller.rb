@@ -1,5 +1,3 @@
-# rubocop:disable Lint/Void
-
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
@@ -14,7 +12,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
     else
-      @posts
       @posts_to_display = display_posts
       render :index, alert: 'Post was not created.'
     end
@@ -42,5 +39,3 @@ class PostsController < ApplicationController
     posts_to_display
   end
 end
-
-# rubocop:enable Lint/Void

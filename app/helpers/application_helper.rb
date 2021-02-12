@@ -22,7 +22,7 @@ module ApplicationHelper
     pending_to_me = Friendship.find_by(friendee_id: current_user.id, user_id: user.id, status: 'pending')
     pending_by_me = Friendship.find_by(user_id: current_user.id, friendee_id: user.id, status: 'pending')
     if user.id == current_user.id
-      content_tag :div, 'This is you!', class: 'profile-link'
+      content_tag :div, ''
     elsif friendship
       content_tag :div, "You're already friends!", class: 'errors'
     elsif inverse_friendship

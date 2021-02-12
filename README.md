@@ -6,6 +6,8 @@
 
 > Agora is a social network web application where users can create posts, like posts and send and receive friend requests.
 
+<p style="center"><img src="./docs/ror-social-scaffold.png"></p>
+
 ## Built With
 
 - Ruby v2.7.0
