@@ -1,0 +1,4 @@
+<div class="request">
+<%= button_to 'Accept', user_friendship_path(request.id, request.id), method: :put, class: 'btn btn-primary' %>
+<%= button_to 'Decline', user_friendship_path(request.id, request.id), method: :delete, class: 'btn btn-primary' %>
+</div>
