@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let(:long_content) { (0...21).map { (65 + rand(26)).chr }.join }
+  let(:long_content) { (0...21).map { rand(65..90).chr }.join }
   it 'is not valid without attributes' do
     expect(Comment.new).to_not be_valid
   end

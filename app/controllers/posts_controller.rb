@@ -1,3 +1,5 @@
+# rubocop:disable Lint/Void
+
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
@@ -29,20 +31,16 @@ class PostsController < ApplicationController
     friend_ids = []
     posts_to_display = []
     current_user.friendships.each do |f|
-      if f.status == 'confirmed'
-        friend_ids << f.friendee_id
-      end
+      friend_ids << f.friendee_id if f.status == 'confirmed'
     end
     current_user.inverse_friendships.each do |f|
-      if f.status == 'confirmed'
-        friend_ids << f.user_id
-      end
+      friend_ids << f.user_id if f.status == 'confirmed'
     end
     timeline_posts.each do |post|
-      if friend_ids.include?(post.user_id) || post.user_id == current_user.id
-        posts_to_display << post
-      end
+      posts_to_display << post if friend_ids.include?(post.user_id) || post.user_id == current_user.id
     end
     posts_to_display
   end
 end
+
+# rubocop:enable Lint/Void

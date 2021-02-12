@@ -22,13 +22,13 @@ module ApplicationHelper
     pending_to_me = Friendship.find_by(friendee_id: current_user.id, user_id: user.id, status: 'pending')
     pending_by_me = Friendship.find_by(user_id: current_user.id, friendee_id: user.id, status: 'pending')
     if user.id == current_user.id
-      content_tag :div, "This is you!", class: 'profile-link'
+      content_tag :div, 'This is you!', class: 'profile-link'
     elsif friendship
       content_tag :div, "You're already friends!", class: 'errors'
     elsif inverse_friendship
       content_tag :div, "You're already friends!", class: 'errors'
     elsif pending_by_me
-      content_tag :div, "You already sent a friend request to this user.", class: 'errors'
+      content_tag :div, 'You already sent a friend request to this user.', class: 'errors'
     elsif pending_to_me
       render partial: 'friendships/decline', locals: { request: user }
     else

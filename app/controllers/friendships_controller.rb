@@ -1,9 +1,8 @@
 class FriendshipsController < ApplicationController
-  
   def new
     @friendship = Friendship.new
   end
-  
+
   def create
     @friendship = current_user.friendships.build(friendee_id: params[:user_id])
     @friendship.status = 'pending'
