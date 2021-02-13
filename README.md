@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-TBD
+http://192.53.163.209/users/sign_in
 
 ## Getting Started
 
@@ -56,7 +56,15 @@ rspec --format documentation
 
 ### Deployment
 
-TBA
+The live version was deployed to a server running Ubuntu 20.04 with the following architecture where the PostgreSQL DB and the Rails Application run inside a Docker container.
+
+<img src="./docs/architecture.png">
+
+<br/><br/>
+The PostgreSQL DB has the following schema:
+
+<img src="./docs/social_scaffold_erd.png">
+
 
 ## Author
 
